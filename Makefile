@@ -124,5 +124,8 @@ github: publish
 	git add --all
 	git commit -m "Site update: $(NOW)"
 	git push -u origin master
+	cd output
+	git add --all
+
 
 .PHONY: html help clean regenerate serve serve-global devserver publish ssh_upload rsync_upload dropbox_upload ftp_upload s3_upload cf_upload github
