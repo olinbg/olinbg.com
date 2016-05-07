@@ -43,7 +43,6 @@ EXTRA_PATH_METADATA = {
     'files/github/.nojekyll': {'path': '.nojekyll'},
     'files/github/CNAME': {'path': 'CNAME'},
     'files/github/README.md': {'path': 'README.md'},
-    'favicon/favicon.ico': {'path': 'favicon.ico'},
     # 'files/github/404.html': {'path': '404.html'},
     # 'files/robots.txt': {'path': 'robots.txt'},
 }
