@@ -27,7 +27,7 @@ DROPBOX_DIR=~/Dropbox/Public/
 
 GITHUB_PAGES_BRANCH=master
 
-NOW=`date +'%y.%m.%d %H:%M:%S'`
+NOW=`date +'%Y-%m-%d %H:%M:%S'`
 
 DEBUG ?= 0
 ifeq ($(DEBUG), 1)
