@@ -18,7 +18,7 @@ FEED_ALL_RSS = 'feeds/all.rss.xml'
 CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
 
 DELETE_OUTPUT_DIRECTORY = True
-OUTPUT_RETENTION = [".git", ".gitignore", "README.md", "CNAME"]
+OUTPUT_RETENTION = [".git", ".gitignore"]
 
 # Following items are often useful when publishing
 
