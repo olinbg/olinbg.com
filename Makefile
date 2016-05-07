@@ -121,12 +121,12 @@ cf_upload: publish
 
 github: publish
 	@echo "Publishing to github w/datetime: $(NOW)"
+	git --git-dir=output/.git --work-tree=output add --all
+	git --git-dir=output/.git --work-tree=output commit -m "Site update: $(NOW)"; true
+	git --git-dir=output/.git --work-tree=output push -u origin master
 	git add --all
 	git commit -m "Site update: $(NOW)"
 	git push -u origin master
-	git --git-dir=output/.git --work-tree=output add --all
-	git --git-dir=output/.git --work-tree=output commit -m "Site update: $(NOW)"
-	git --git-dir=output/.git --work-tree=output push -u origin master
 
 
 .PHONY: html help clean regenerate serve serve-global devserver publish ssh_upload rsync_upload dropbox_upload ftp_upload s3_upload cf_upload github
