@@ -1,6 +1,5 @@
 Title: About
 
-
 ## Setup
 
 * Uses the [Hyde](https://github.com/jvanz/pelican-hyde/) theme, based on [Poole](http://getpoole.com)
