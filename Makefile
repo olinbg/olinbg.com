@@ -122,10 +122,13 @@ cf_upload: publish
 github: publish
 	@echo "Publishing to github w/datetime: $(NOW)"
 	git add --all
-	git commit -m "Site update: $(NOW)"
+	git commit -m "Site content update: $(NOW)"
 	git push -u origin master
 	cd output
 	git add --all
+	git commit -m "Site output update: $(NOW)"
+	git push -u origin master
+	cd ..
 
 
 .PHONY: html help clean regenerate serve serve-global devserver publish ssh_upload rsync_upload dropbox_upload ftp_upload s3_upload cf_upload github

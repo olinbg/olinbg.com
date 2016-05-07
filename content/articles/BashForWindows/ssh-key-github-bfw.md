@@ -29,4 +29,4 @@ Select everything before your machine name on the last line and press Ctrl+C to 
 
 ![SSH settings in GitHub]({filename}/images/2016-05-06/github.png)
 
-You'll get a notification that the key hasn't been used yet.  Clone a repo, and you're good to go.
+You'll get a notification that the key hasn't been used yet.  Clone a repo, and you're ready to go.
