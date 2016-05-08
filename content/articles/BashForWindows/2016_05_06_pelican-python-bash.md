@@ -1,6 +1,7 @@
 Title: Python and Pelican on Bash for Windows
 Date: 2016-05-06 18:40
 Category: BashForWindows
+Slug: pelican-python-bash
 
 This site is up and running after setting up [Bash for Ubuntu for Windows](https://msdn.microsoft.com/en-us/commandline/wsl/about) and [Pelican](http://blog.getpelican.com/).  There are a few issues on Bash for Windows right now, but seeing Ubuntu's command-line capabilities on Windows 10 is eye-opening for long-time Windows users.
 
@@ -23,6 +24,7 @@ Fire up Bash, and you've got a blinking cursor.
 ## Installing Python
 
 The Python installation is far less involved, though you'll need to install directly (sudo apt-get) rather than using a virtual environment.  This is due to an issue around symlinks in Bash for Windows (details are [here](https://github.com/Microsoft/BashOnWindows/issues/201)).  In the future, once this issue is addressed, virtual environments should work without issue.
+
 
 The following command gets python and pip up and running.
 

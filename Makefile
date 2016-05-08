@@ -128,5 +128,9 @@ github: publish
 	git commit -m "Site update: $(NOW)"
 	git push -u origin master
 
+checkout_output:
+	cd $(BASEDIR)
+	rm -rf output/
+	git clone git@github.com:olinbg/olinbg.github.com.git output
 
 .PHONY: html help clean regenerate serve serve-global devserver publish ssh_upload rsync_upload dropbox_upload ftp_upload s3_upload cf_upload github
