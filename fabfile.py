@@ -90,13 +90,13 @@ def cf_upload():
 def publish():
     """Publish to production via rsync"""
     local('pelican -s publishconf.py')
-    project.rsync_project(
-        remote_dir=dest_path,
-        exclude=".DS_Store",
-        local_dir=DEPLOY_PATH.rstrip('/') + '/',
-        delete=True,
-        extra_opts='-c',
-    )
+    # project.rsync_project(
+    #     remote_dir=dest_path,
+    #     exclude=".DS_Store",
+    #     local_dir=DEPLOY_PATH.rstrip('/') + '/',
+    #     delete=True,
+    #     extra_opts='-c',
+    # )
 
 def gh_pages():
     """Publish to GitHub Pages"""
@@ -122,3 +122,22 @@ def post(title, slug, category):
         w.write(t)
     print("Post created -> " + f_create)
 
+def github():
+    publish()
+    now = datetime.today()
+    print("Publishing to github w/datetime: {}".format(now))
+    local("git --git-dir=output/.git --work-tree=output add --all")
+    print(env.warn_only)
+    with settings(warn_only=True):
+        print(env.warn_only)
+        local("git --git-dir=output/.git --work-tree=output commit -m \"Site update: {}\"".format(now))
+    print(env.warn_only)
+    local("git --git-dir=output/.git --work-tree=output push -u origin master")
+    local("git add --all")
+    local("git commit -m \"Site update: {}\"".format(now))
+    local("git push -u origin master")
+
+def checkout_output():
+    """Clone the output diretory from github"""
+    local("rm -rf output/")
+    local("git clone git@github.com:olinbg/olinbg.github.com.git output")
