@@ -4,6 +4,7 @@ import os
 import shutil
 import sys
 import SocketServer
+from datetime import datetime
 
 from pelican.server import ComplexHTTPRequestHandler
 
@@ -25,6 +26,16 @@ env.github_pages_branch = "gh-pages"
 
 # Port for `serve`
 PORT = 8000
+
+POST_TEMPLATE = """
+Title: {title}
+Date: {year}-{month}-{day} {hour}:{minute:02d}
+Category: {category}
+Slug: {slug}
+Status: draft
+
+(Fill in)
+"""
 
 def clean():
     """Remove generated files"""
@@ -92,3 +103,22 @@ def gh_pages():
     rebuild()
     local("ghp-import -b {github_pages_branch} {deploy_path}".format(**env))
     local("git push origin {github_pages_branch}".format(**env))
+
+def post(title, slug, category):
+    """Create a markdown post with title, slug, and category"""
+    today = datetime.today()
+    f_create = "content/articles/{}/{}_{:0>2}_{:0>2}_{}.md".format(
+        category, today.year, today.month, today.day, slug)
+    t = POST_TEMPLATE.strip().format(title=title,
+                                hashes='#' * len(title),
+                                year=today.year,
+                                month=today.month,
+                                day=today.day,
+                                hour=today.hour,
+                                minute=today.minute,
+                                category=category,
+                                slug=slug)
+    with open(f_create, 'w') as w:
+        w.write(t)
+    print("Post created -> " + f_create)
+
