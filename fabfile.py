@@ -4,6 +4,7 @@ import os
 import shutil
 import sys
 import SocketServer
+import livereload
 from datetime import datetime
 
 from pelican.server import ComplexHTTPRequestHandler
@@ -127,11 +128,8 @@ def github():
     now = datetime.today()
     print("Publishing to github w/datetime: {}".format(now))
     local("git --git-dir=output/.git --work-tree=output add --all")
-    print(env.warn_only)
     with settings(warn_only=True):
-        print(env.warn_only)
         local("git --git-dir=output/.git --work-tree=output commit -m \"Site update: {}\"".format(now))
-    print(env.warn_only)
     local("git --git-dir=output/.git --work-tree=output push -u origin master")
     local("git add --all")
     local("git commit -m \"Site update: {}\"".format(now))
@@ -141,3 +139,18 @@ def checkout_output():
     """Clone the output diretory from github"""
     local("rm -rf output/")
     local("git clone git@github.com:olinbg/olinbg.github.com.git output")
+
+def live_build(port=8080):
+
+    clean()
+    build()
+    os.chdir('output')  # 3
+    server = livereload.Server()  # 4
+    server.watch('../content/*.rst',  # 5
+        livereload.shell('pelican -s ../pelicanconf.py -o ../output'))  # 6
+    server.watch('../naffy/',  # 7
+        livereload.shell('pelican -s ../pelicanconf.py -o ../output'))  # 8
+    server.watch('*.html')  # 9
+    server.watch('*.css')  # 10
+    server.serve(liveport=35729, port=port)  # 11
+    os.chdir('..')

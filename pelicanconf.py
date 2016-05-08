@@ -46,7 +46,7 @@ EXTRA_PATH_METADATA = {
     # 'files/github/404.html': {'path': '404.html'},
     # 'files/robots.txt': {'path': 'robots.txt'},
 }
-THEME = '/mnt/c/Bash/pelican/pelican-themes/hyde'
+THEME = 'hyde'
 PROFILE_IMAGE = 'profile.jpg'
 
 BIO = 'Putting it all together...<br /><br /><a href="/pages/about.html">About</a>'
