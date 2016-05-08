@@ -124,6 +124,7 @@ def post(title, slug, category):
     print("Post created -> " + f_create)
 
 def github():
+    """First publish, then update both repos with the latest changes"""
     publish()
     now = datetime.today()
     print("Publishing to github w/datetime: {}".format(now))
@@ -141,6 +142,7 @@ def checkout_output():
     local("git clone git@github.com:olinbg/olinbg.github.com.git output")
 
 def live(port=8000):
+    """Using livereload, run a local server that updates the browser"""
     build()
     server = livereload.Server()
     def live_build_ignore(s):
