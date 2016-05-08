@@ -46,11 +46,11 @@ def clean():
 
 def build():
     """Build local version of site"""
-    local('pelican -s pelicanconf.py')
+    local('pelican content -o output -s pelicanconf.py')
 
 def rebuild():
     """`clean` then `build`"""
-    clean()
+    # clean()
     build()
 
 def regenerate():
@@ -140,17 +140,10 @@ def checkout_output():
     local("rm -rf output/")
     local("git clone git@github.com:olinbg/olinbg.github.com.git output")
 
-def live_build(port=8080):
-
-    clean()
+def live(port=8000):
     build()
-    os.chdir('output')  # 3
-    server = livereload.Server()  # 4
-    server.watch('../content/*.rst',  # 5
-        livereload.shell('pelican -s ../pelicanconf.py -o ../output'))  # 6
-    server.watch('../naffy/',  # 7
-        livereload.shell('pelican -s ../pelicanconf.py -o ../output'))  # 8
-    server.watch('*.html')  # 9
-    server.watch('*.css')  # 10
-    server.serve(liveport=35729, port=port)  # 11
-    os.chdir('..')
+    server = livereload.Server()
+    def live_build_ignore(s):
+        return False
+    server.watch('content/', build, ignore=live_build_ignore)
+    server.serve(root='output', liveport=35729, port=port)

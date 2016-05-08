@@ -53,8 +53,6 @@ BIO = 'Putting it all together...<br /><br /><a href="/pages/about.html">About</
 
 ARTICLE_URL = 'posts/{slug}.html'
 ARTICLE_SAVE_AS = 'posts/{slug}.html'
-DELETE_OUTPUT_DIRECTORY = True
-OUTPUT_RETENTION = [".git", ".gitignore"]
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True

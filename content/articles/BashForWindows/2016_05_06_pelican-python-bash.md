@@ -1,4 +1,4 @@
-Title: Python and Pelican on Bash for Windows
+Title: Python and Pelican on Bash for Windows2
 Date: 2016-05-06 18:40
 Category: BashForWindows
 Slug: pelican-python-bash
