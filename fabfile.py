@@ -10,7 +10,7 @@ from datetime import datetime
 from pelican.server import ComplexHTTPRequestHandler
 
 # Local path configuration (can be absolute or relative to fabfile)
-env.deploy_path = 'output'
+env.deploy_path = '../output'
 DEPLOY_PATH = env.deploy_path
 STARTING_PATH = os.getcwd()
 print "Deploy path: {}, Starting path: {}".format(DEPLOY_PATH, STARTING_PATH)
@@ -48,7 +48,7 @@ def clean():
 
 def build():
     """Build local version of site"""
-    local('pelican content -o output -s pelicanconf.py')
+    local('pelican content -o {} -s pelicanconf.py'.format(DEPLOY_PATH))
 
 def rebuild():
     """`clean` then `build`"""
@@ -57,7 +57,7 @@ def rebuild():
 
 def regenerate():
     """Automatically regenerate site upon file modification"""
-    local('pelican -r -s pelicanconf.py')
+    local('pelican content -o {} -r -s pelicanconf.py'.format(DEPLOY_PATH))
 
 def serve():
     """Serve site at http://localhost:8000/"""
@@ -92,7 +92,7 @@ def cf_upload():
 @hosts(production)
 def publish():
     """Publish to production via rsync"""
-    local('pelican -s publishconf.py')
+    local('pelican -o {} -s publishconf.py'.format(DEPLOY_PATH))
     # project.rsync_project(
     #     remote_dir=dest_path,
     #     exclude=".DS_Store",
@@ -142,8 +142,8 @@ def github():
 
 def checkout_output():
     """Clone the output diretory from github"""
-    local("rm -rf output/")
-    local("git clone git@github.com:olinbg/olinbg.github.com.git output")
+    local("rm -rf {}/".format(DEPLOY_PATH))
+    local("git clone git@github.com:olinbg/olinbg.github.com.git {}".format(DEPLOY_PATH))
 
 def live(port=8000):
     """Using livereload, run a local server that updates the browser"""
@@ -152,4 +152,4 @@ def live(port=8000):
     def live_build_ignore(s):
         return False
     server.watch('content/', build, ignore=live_build_ignore)
-    server.serve(root='output', liveport=35729, port=port)
+    server.serve(root=DEPLOY_PATH, liveport=35729, port=port)
