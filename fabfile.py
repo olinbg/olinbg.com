@@ -131,12 +131,12 @@ def github():
     now = datetime.today()
     with lcd(DEPLOY_PATH):
         print("Publishing to github w/datetime: {}".format(now))
-        local("git add --all")
+        local("git add --all .")
         with settings(warn_only=True):
             local("git commit -m \"Site update: {}\"".format(now))
         local("git push -u origin master")
 
-    local("git add --all")
+    local("git add --all .")
     local("git commit -m \"Site update: {}\"".format(now))
     local("git push -u origin master")
 
