@@ -121,10 +121,10 @@ cf_upload: publish
 
 github: publish
 	@echo "Publishing to github w/datetime: $(NOW)"
-	git -C 'output' add --all
+	git -C 'output' add --all .
 	git -C 'output' commit -m "Site update: $(NOW)"; true
 	git -C 'output' push -u origin master
-	git add --all
+	git add --all .
 	git commit -m "Site update: $(NOW)"
 	git push -u origin master
 
