@@ -12,6 +12,8 @@ from pelican.server import ComplexHTTPRequestHandler
 # Local path configuration (can be absolute or relative to fabfile)
 env.deploy_path = 'output'
 DEPLOY_PATH = env.deploy_path
+STARTING_PATH = os.getcwd()
+print "Deploy path: {}, Starting path: {}".format(DEPLOY_PATH, STARTING_PATH)
 
 # Remote server configuration
 production = 'root@localhost:22'
@@ -113,8 +115,8 @@ def post(title, slug, category):
     t = POST_TEMPLATE.strip().format(title=title,
                                 hashes='#' * len(title),
                                 year=today.year,
-                                month=today.month,
-                                day=today.day,
+                                month='{0:02d}'.format(today.month),
+                                day='{0:02d}'.format(today.day),
                                 hour=today.hour,
                                 minute=today.minute,
                                 category=category,
@@ -127,11 +129,13 @@ def github():
     """First publish, then update both repos with the latest changes"""
     publish()
     now = datetime.today()
-    print("Publishing to github w/datetime: {}".format(now))
-    local("git --git-dir=output/.git --work-tree=output add --all")
-    with settings(warn_only=True):
-        local("git --git-dir=output/.git --work-tree=output commit -m \"Site update: {}\"".format(now))
-    local("git --git-dir=output/.git --work-tree=output push -u origin master")
+    with lcd(DEPLOY_PATH):
+        print("Publishing to github w/datetime: {}".format(now))
+        local("git add --all")
+        with settings(warn_only=True):
+            local("git commit -m \"Site update: {}\"".format(now))
+        local("git push -u origin master")
+
     local("git add --all")
     local("git commit -m \"Site update: {}\"".format(now))
     local("git push -u origin master")

@@ -1,4 +1,4 @@
-Title: Python and Pelican on Bash for Windows2
+Title: Python and Pelican on Bash for Windows
 Date: 2016-05-06 18:40
 Category: BashForWindows
 Slug: pelican-python-bash
@@ -23,7 +23,7 @@ Fire up Bash, and you've got a blinking cursor.
 
 ## Installing Python
 
-The Python installation is far less involved, though you'll need to install directly (sudo apt-get) rather than using a virtual environment.  This is due to an issue around symlinks in Bash for Windows (details are [here](https://github.com/Microsoft/BashOnWindows/issues/201)).  In the future, once this issue is addressed, virtual environments should work without issue.
+The Python installation is far less involved, though you'll need to install directly (sudo apt-get) rather than using a virtual environment.  This is due to an issue around symlinks in Bash for Windows (details are [here](https://github.com/Microsoft/BashOnWindows/issues/201)).  **UPDATE** - looks like the fix is in the latest build, give it a shot!
 
 
 The following command gets python and pip up and running.
