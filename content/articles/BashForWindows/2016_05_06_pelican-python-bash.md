@@ -52,4 +52,4 @@ However, *this didn't work in Bash for Windows*, again due to issues around file
 
 What ended up working is running each of the install commands individually, because the packaging step at the end is failing.  It's a major hack, but got me up and running for now.  If this isn't addressed in the next developer build, I'll file an issue for it.
 
-Once Pelican is up and running, I recommend the [documentation quickstart](http://docs.getpelican.com/en/3.6.3/quickstart.html) as a first step.
+Once Pelican is up and running, I recommend the [documentation quickstart](http://docs.getpelican.com/en/latest/quickstart.html) as a first step.
