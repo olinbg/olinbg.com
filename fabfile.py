@@ -125,6 +125,13 @@ def post(title, slug, category):
         w.write(t)
     print("Post created -> " + f_create)
 
+def github_pull():
+    """Pull both repos for updates"""
+    with lcd(DEPLOY_PATH):
+        local("git pull")
+
+    local("git pull")
+
 def github():
     """First publish, then update both repos with the latest changes"""
     publish()
