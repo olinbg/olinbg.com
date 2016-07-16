@@ -11,6 +11,6 @@ Title: About
 
 ## Site Favicon
 
-From a Paris trip a few years ago…
+From a Paris trip…
 
 ![Musee Orsay Clock]({filename}/images/musee_orsay_clock.jpg)

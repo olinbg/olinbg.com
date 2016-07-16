@@ -125,14 +125,14 @@ def post(title, slug, category):
         w.write(t)
     print("Post created -> " + f_create)
 
-def github_pull():
+def pull():
     """Pull both repos for updates"""
     with lcd(DEPLOY_PATH):
         local("git pull")
 
     local("git pull")
 
-def github():
+def commit():
     """First publish, then update both repos with the latest changes"""
     publish()
     now = datetime.today()
@@ -146,6 +146,13 @@ def github():
     local("git add --all .")
     local("git commit -m \"Site update: {}\"".format(now))
     local("git push -u origin master")
+
+def diff():
+    """Get modified files in both repos"""
+    with lcd(DEPLOY_PATH):
+        local("git status")
+
+    local("git status")
 
 def checkout_output():
     """Clone the output diretory from github"""
