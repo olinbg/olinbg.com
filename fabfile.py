@@ -3,7 +3,7 @@ import fabric.contrib.project as project
 import os
 import shutil
 import sys
-import SocketServer
+import socketserver
 import livereload
 from datetime import datetime
 
@@ -13,7 +13,7 @@ from pelican.server import ComplexHTTPRequestHandler
 env.deploy_path = '../output'
 DEPLOY_PATH = env.deploy_path
 STARTING_PATH = os.getcwd()
-print "Deploy path: {}, Starting path: {}".format(DEPLOY_PATH, STARTING_PATH)
+print("Deploy path: {}, Starting path: {}".format(DEPLOY_PATH, STARTING_PATH))
 
 # Remote server configuration
 production = 'root@localhost:22'
@@ -60,16 +60,17 @@ def regenerate():
     local('pelican content -o {} -r -s pelicanconf.py'.format(DEPLOY_PATH))
 
 def serve():
-    """Serve site at http://localhost:8000/"""
-    os.chdir(env.deploy_path)
+    """[Currently mapped to live()] Serve site at http://localhost:8000/"""
+    live()
+    # os.chdir(env.deploy_path)
 
-    class AddressReuseTCPServer(SocketServer.TCPServer):
-        allow_reuse_address = True
+    # class AddressReuseTCPServer(socketserver.TCPServer):
+    #     allow_reuse_address = True
 
-    server = AddressReuseTCPServer(('', PORT), ComplexHTTPRequestHandler)
+    # server = AddressReuseTCPServer(('', PORT), ComplexHTTPRequestHandler)
 
-    sys.stderr.write('Serving on port {0} ...\n'.format(PORT))
-    server.serve_forever()
+    # sys.stderr.write('Serving on port {0} ...\n'.format(PORT))
+    # server.serve_forever()
 
 def reserve():
     """`build`, then `serve`"""
@@ -101,11 +102,11 @@ def publish():
     #     extra_opts='-c',
     # )
 
-def gh_pages():
-    """Publish to GitHub Pages"""
-    rebuild()
-    local("ghp-import -b {github_pages_branch} {deploy_path}".format(**env))
-    local("git push origin {github_pages_branch}".format(**env))
+# def gh_pages():
+    # """Publish to GitHub Pages"""
+    # rebuild()
+    # local("ghp-import -b {github_pages_branch} {deploy_path}".format(**env))
+    # local("git push origin {github_pages_branch}".format(**env))
 
 def post(title, slug, category):
     """Create a markdown post with title, slug, and category"""
