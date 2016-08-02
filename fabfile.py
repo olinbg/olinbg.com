@@ -122,6 +122,7 @@ def post(title, slug, category):
                                 minute=today.minute,
                                 category=category,
                                 slug=slug)
+    os.makedirs(os.path.dirname(f_create), exist_ok=True)
     with open(f_create, 'w') as w:
         w.write(t)
     print("Post created -> " + f_create)
