@@ -56,10 +56,13 @@ help:
 	@echo 'Set the RELATIVE variable to 1 to enable relative urls                    '
 	@echo '                                                                          '
 
-status: diff
-diff:
+status: publish
 	cd $(OUTPUTDIR) && $(GIT) status
 	$(GIT) status
+
+diff: publish
+	cd $(OUTPUTDIR) && $(GIT) diff
+	$(GIT) diff
 
 html:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
@@ -91,12 +94,12 @@ regenerate:
 serve: live
 
 live:
-	@echo "Add livereload support from python"
+	@echo "py3 olinbg.py live"
 
 post: new_post
 
 new_post:
-	@echo "Add new post support from python"
+	@echo "py3 olinbg.py post {title} {slug} {category}"
 
 # serve:
 # ifdef PORT
