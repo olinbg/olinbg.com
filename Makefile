@@ -38,19 +38,16 @@ help:
 	@echo 'Makefile for a pelican Web site                                           '
 	@echo '                                                                          '
 	@echo 'Usage:                                                                    '
-	@echo '   make diff (or status)               view file differences in git       '
+	@echo '   make status                         view file status in git            '
+	@echo '   make diff                           view file differences in git       '
 	@echo '   make html                           (re)generate the web site          '
-	@echo '   make clean                          remove the generated files         '
-	@echo '   make regenerate                     regenerate files upon modification '
 	@echo '   make publish                        generate using production settings '
-	@echo '   make serve [PORT=8000]              serve site at http://localhost:8000'
-	@echo '   make serve-global [SERVER=0.0.0.0]  serve (as root) to $(SERVER):80    '
-	@echo '   make devserver [PORT=8000]          start/restart develop_server.sh    '
-	@echo '   make stopserver                     stop local server                  '
-	@echo '   make ssh_upload                     upload the web site via SSH        '
-	@echo '   make rsync_upload                   upload the web site via rsync+ssh  '
-	@echo '   make dropbox_upload                 upload the web site via Dropbox    '
-	@echo '   make github                         upload the web site via gh-pages   '
+	@echo '   make clean                          remove the generated files         '
+	@echo '   make commit (or github)             upload the web site via gh-pages   '
+	@echo '   make checkout_output                get output folder from github      '
+	@echo '   make pull                           get latest changes from git        '
+	@echo '   make serve (or live)                show command for live              '
+	@echo '   make post (or new_post)             show command for post              '
 	@echo '                                                                          '
 	@echo 'Set the DEBUG variable to 1 to enable debugging, e.g. make DEBUG=1 html   '
 	@echo 'Set the RELATIVE variable to 1 to enable relative urls                    '
@@ -70,6 +67,10 @@ html:
 publish:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
 
+clean:
+	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)
+	@echo 'Run checkout_output to get the output directory back'
+
 commit: github
 
 github: publish
@@ -77,19 +78,12 @@ github: publish
 	-cd $(OUTPUTDIR) && $(GIT_ADD) && $(GIT_COMMIT) && $(GIT_PUSH)
 	-$(GIT_ADD) && $(GIT_COMMIT) && $(GIT_PUSH)
 
-clean:
-	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)
-	@echo 'Run checkout_output to get the output directory back'
-
 checkout_output: clean
 	$(GIT) clone git@github.com:olinbg/olinbg.github.com.git $(OUTPUTDIR)
 
 pull: 
 	cd $(OUTPUTDIR) && $(GIT_PULL)
 	$(GIT_PULL)
-
-regenerate:
-	$(PELICAN) -r $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 
 serve: live
 
@@ -100,6 +94,12 @@ post: new_post
 
 new_post:
 	@echo "py3 olinbg.py post {title} {slug} {category}"
+
+.PHONY: html help clean regenerate serve serve-global devserver publish ssh_upload rsync_upload dropbox_upload ftp_upload s3_upload cf_upload github
+
+# stopserver:
+# 	$(BASEDIR)/develop_server.sh stop
+# 	@echo 'Stopped Pelican and SimpleHTTPServer processes running in background.'
 
 # serve:
 # ifdef PORT
@@ -115,7 +115,6 @@ new_post:
 # 	cd $(OUTPUTDIR) && $(PY) -m pelican.server 80 0.0.0.0
 # endif
 
-
 # devserver:
 # ifdef PORT
 # 	$(BASEDIR)/develop_server.sh restart $(PORT)
@@ -123,14 +122,8 @@ new_post:
 # 	$(BASEDIR)/develop_server.sh restart
 # endif
 
-stopserver:
-	$(BASEDIR)/develop_server.sh stop
-	@echo 'Stopped Pelican and SimpleHTTPServer processes running in background.'
+# ssh_upload: publish
+# 	scp -P $(SSH_PORT) -r $(OUTPUTDIR)/* $(SSH_USER)@$(SSH_HOST):$(SSH_TARGET_DIR)
 
-ssh_upload: publish
-	scp -P $(SSH_PORT) -r $(OUTPUTDIR)/* $(SSH_USER)@$(SSH_HOST):$(SSH_TARGET_DIR)
-
-dropbox_upload: publish
-	cp -r $(OUTPUTDIR)/* $(DROPBOX_DIR)
-
-.PHONY: html help clean regenerate serve serve-global devserver publish ssh_upload rsync_upload dropbox_upload ftp_upload s3_upload cf_upload github
+# dropbox_upload: publish
+# 	cp -r $(OUTPUTDIR)/* $(DROPBOX_DIR)
