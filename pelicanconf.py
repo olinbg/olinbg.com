@@ -53,6 +53,7 @@ BIO = 'Putting it all together...<br /><br /><a href="/pages/about.html">About</
 
 ARTICLE_URL = 'posts/{slug}.html'
 ARTICLE_SAVE_AS = 'posts/{slug}.html'
+# CATEGORY_SAVE_AS = 'category/{name}.html'
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True

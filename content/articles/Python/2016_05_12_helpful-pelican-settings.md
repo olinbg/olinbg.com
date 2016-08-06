@@ -1,6 +1,6 @@
 Title: Helpful Pelican Settings
 Date: 2016-05-12 22:52
-Category: Pelican
+Category: Python
 Slug: helpful-pelican-settings
 Status: published
 

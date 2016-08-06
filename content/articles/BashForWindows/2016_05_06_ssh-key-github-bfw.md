@@ -1,6 +1,6 @@
 Title: Generating SSH Keys for Github on Bash for Windows
 Date: 2016-05-06 06:56
-Category: BashForWindows
+Category: Bash For Windows
 Slug: ssh-key-github-bfw
 
 If you'd rather not share SSH keys between your standard Windows installation and Bash for Windows, you can use the built-in key generator from Ubuntu to generate your ssh keys.

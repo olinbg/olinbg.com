@@ -43,6 +43,8 @@
 	<body class="theme-base-08">
 		{% include 'sidebar.html' %}
 		<div class="content container">
+			{% block content_title %}
+			{% endblock %}
 			{% block content %}
 			{% endblock %}
 		</div>

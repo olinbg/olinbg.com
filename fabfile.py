@@ -10,9 +10,9 @@ from datetime import datetime
 from pelican.server import ComplexHTTPRequestHandler
 
 # Local path configuration (can be absolute or relative to fabfile)
-env.deploy_path = '../output'
-DEPLOY_PATH = env.deploy_path
 STARTING_PATH = os.getcwd()
+env.deploy_path = os.path.abspath(STARTING_PATH + '/../output')
+DEPLOY_PATH = env.deploy_path
 print("Deploy path: {}, Starting path: {}".format(DEPLOY_PATH, STARTING_PATH))
 
 # Remote server configuration
@@ -44,7 +44,7 @@ def clean():
     """Remove generated files"""
     if os.path.isdir(DEPLOY_PATH):
         shutil.rmtree(DEPLOY_PATH)
-        os.makedirs(DEPLOY_PATH)
+        os.makedirs(os.path.dirname(DEPLOY_PATH))
 
 def build():
     """Build local version of site"""
@@ -153,7 +153,7 @@ def diff():
     """Get modified files in both repos"""
     with lcd(DEPLOY_PATH):
         local("git status")
-
+        
     local("git status")
 
 def checkout_output():
@@ -168,4 +168,5 @@ def live(port=8000):
     def live_build_ignore(s):
         return False
     server.watch('content/', build, ignore=live_build_ignore)
+    server.watch('hyde/', build, ignore=live_build_ignore)
     server.serve(root=DEPLOY_PATH, liveport=35729, port=port)

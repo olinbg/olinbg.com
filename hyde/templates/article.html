@@ -3,7 +3,7 @@
 {% block content %}
 <div class="post">
 	<h1 class="post-title">{{ article.title }}</h1>
-	<span class="post-date">{{ article.locale_date }}</span>
+	<span class="post-date">{{ article.locale_date }} in <a href="/{{ article.category.url }}">{{ article.category }}</a></span>
 	{{ article.content }}
 	{% include 'fragments/disqus.html' %}
     {% include 'fragments/contact.html' %}

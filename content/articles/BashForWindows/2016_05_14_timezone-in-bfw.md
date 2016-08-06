@@ -1,6 +1,6 @@
 Title: Setting Timezone in Bash for Windows
 Date: 2016-05-14 7:08
-Category: BashForWindows
+Category: Bash For Windows
 Slug: timezone-in-bfw
 Status: published
 

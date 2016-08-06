@@ -1,6 +1,6 @@
 Title: Uninstall and Reinstall Bash for Windows
 Date: 2016-07-31 07:51
-Category: BashForWindows
+Category: Bash For Windows
 Slug: uninstall-reinstall-bfw
 
 After the most recent update for Bash for Windows, a fairly major change went into effect: you're now logged in with a "user" level account rather than "root".  This has major benefits, and works much more like any other Linux/Unix install that you'd run locally.

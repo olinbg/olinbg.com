@@ -1,6 +1,6 @@
 Title: Publish Pelican to GitHub from Bash for Windows
 Date: 2016-05-14 06:37
-Category: BashForWindows
+Category: Bash For Windows
 Slug: pelican-to-gh-bfw
 Status: published
 
