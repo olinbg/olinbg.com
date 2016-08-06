@@ -13,6 +13,7 @@ NOW=`date +'%Y-%m-%d %H:%M:%S'`
 GIT_ADD=$(GIT) add --all
 GIT_COMMIT=$(GIT) commit -m "Site update: $(NOW)"
 GIT_PUSH=$(GIT) push -u origin master
+GIT_PULL=$(GIT) pull
 
 SSH_HOST=localhost
 SSH_PORT=22
@@ -70,8 +71,8 @@ commit: github
 
 github: publish
 	@echo "Publishing to github w/datetime: $(NOW)"
-	cd $(OUTPUTDIR) && $(GIT_ADD) && $(GIT_COMMIT) && $(GIT_PUSH)
-	$(GIT_ADD) && $(GIT_COMMIT) && $(GIT_PUSH)
+	-cd $(OUTPUTDIR) && $(GIT_ADD) && $(GIT_COMMIT) && $(GIT_PUSH)
+	-$(GIT_ADD) && $(GIT_COMMIT) && $(GIT_PUSH)
 
 clean:
 	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)
@@ -79,6 +80,10 @@ clean:
 
 checkout_output: clean
 	$(GIT) clone git@github.com:olinbg/olinbg.github.com.git $(OUTPUTDIR)
+
+pull: 
+	cd $(OUTPUTDIR) && $(GIT_PULL)
+	$(GIT_PULL)
 
 regenerate:
 	$(PELICAN) -r $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
