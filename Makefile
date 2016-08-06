@@ -9,6 +9,11 @@ OUTPUTDIR=$(BASEDIR)/../output
 CONFFILE=$(BASEDIR)/pelicanconf.py
 PUBLISHCONF=$(BASEDIR)/publishconf.py
 
+NOW=`date +'%Y-%m-%d %H:%M:%S'`
+GIT_ADD=$(GIT) add --all
+GIT_COMMIT=$(GIT) commit -m "Site update: $(NOW)"
+GIT_PUSH=$(GIT) push -u origin master
+
 SSH_HOST=localhost
 SSH_PORT=22
 SSH_USER=root
@@ -17,8 +22,6 @@ SSH_TARGET_DIR=/var/www
 DROPBOX_DIR=~/Dropbox/Public/
 
 GITHUB_PAGES_BRANCH=master
-
-NOW=`date +'%Y-%m-%d %H:%M:%S'`
 
 DEBUG ?= 0
 ifeq ($(DEBUG), 1)
@@ -67,19 +70,15 @@ commit: github
 
 github: publish
 	@echo "Publishing to github w/datetime: $(NOW)"
-	git -C 'output' add --all .
-	git -C 'output' commit -m "Site update: $(NOW)"; true
-	git -C 'output' push -u origin master
-	git add --all .
-	git commit -m "Site update: $(NOW)"
-	git push -u origin master
+	cd $(OUTPUTDIR) && $(GIT_ADD) && $(GIT_COMMIT) && $(GIT_PUSH)
+	$(GIT_ADD) && $(GIT_COMMIT) && $(GIT_PUSH)
 
 clean:
 	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)
 	@echo 'Run checkout_output to get the output directory back'
 
 checkout_output: clean
-	$(GIT) clone git@github.com:olinbg/olinbg.github.com.git output
+	$(GIT) clone git@github.com:olinbg/olinbg.github.com.git $(OUTPUTDIR)
 
 regenerate:
 	$(PELICAN) -r $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
