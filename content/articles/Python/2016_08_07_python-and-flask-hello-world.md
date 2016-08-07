@@ -5,8 +5,6 @@ Slug: python-and-flask-hello-world
 Series: Python and Flask
 Status: published
 
-*NOTE: I'm picking up Flask as a learning exercise, so this post is the first in a series.*
-
 Python has a number of capable web frameworks, with [Django](https://www.djangoproject.com/) being the larger / "batteries included" option of the, and [Flask](http://flask.pocoo.org/) being the smaller / "assembly required" choice.  As with many projects in Python, I start with the [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/scenarios/web/).  Here are two quotes from the site on picking a web framework:
 
 > The majority of new Python web applications today are built with Django.
@@ -15,7 +13,7 @@ and...
 
 > Flask is default choice for any Python web application that isn’t a good fit for Django.
 
-So from a quick start and learning perspective, we'll go with Flask.  I'm also going to use VS Code for the project so screenshots and info will be from there.  You can download VS Code for free [here](https://code.visualstudio.com/).
+So from a quick start and learning perspective, I'm using Flask - purely a learning exercise.  I'm also going to use VS Code for the project so screenshots and info will be from there.  You can download VS Code for free [here](https://code.visualstudio.com/).
 
 ## Getting up and running
 
