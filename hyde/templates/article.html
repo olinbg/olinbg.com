@@ -4,9 +4,49 @@
 <div class="post">
 	<h1 class="post-title">{{ article.title }}</h1>
 	<span class="post-date">{{ article.locale_date }} in <a href="/{{ article.category.url }}">{{ article.category }}</a></span>
+	{% if article.series %}
+	<span class="related">
+		<hr />
+		<h5>Part {{ article.series.index }} of the "{{ article.series.name }}" series:</h5>
+		<small>
+		<ol class="series-parts">
+			{% for part_article in article.series.all %}
+				<li>
+					
+						{% if part_article == article %}
+							{{ part_article.title }}
+						{% else %}
+							<a href='{{ SITEURL }}/{{ part_article.url }}'>{{ part_article.title }}</a>
+						{% endif %}
+				</li>
+			{% endfor %}
+		</ol>
+		</small>
+		<hr />
+	</span>
+	{% endif %}
 	{{ article.content }}
+
 	{% include 'fragments/disqus.html' %}
     {% include 'fragments/contact.html' %}
+
+	{% if article.series %}
+	<span class="pagination">
+		{% if article.series.previous %}
+		<span class="pagination-item older"><a href="{{ SITEURL }}/{{ article.series.previous.url }}">Previous: {{ article.series.previous.title }}</a></span>
+		{% else %}
+		<span class="pagination-item older">First: {{ article.title }}</span>
+		{% endif %}
+
+		{% if article.series.next %}
+		<span class="pagination-item newer"><a href="{{ SITEURL }}/{{ article.series.next.url }}">Next: {{ article.series.next.title }}</a></span>
+		{% else %}
+		<span class="pagination-item newer">Last: {{article.title}}</span>
+		{% endif %}
+	</span>
+	{% endif %}
+
+
 </div>
 {% endblock %}
 

@@ -2,6 +2,7 @@ Title: Python and Flask - Hello World
 Date: 2016-08-07 09:14
 Category: Python
 Slug: python-and-flask-hello-world
+Series: Python and Flask
 Status: published
 
 *NOTE: I'm picking up Flask as a learning exercise, so this post is the first in a series.*

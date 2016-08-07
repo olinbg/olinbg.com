@@ -7,10 +7,12 @@ SITENAME = 'Olin Gay - Blog'
 SITEURL = ''
 
 PATH = 'content'
-
 TIMEZONE = 'America/New_York'
-
 DEFAULT_LANG = 'en'
+
+# Plugin configuration
+PLUGINS = ['series']
+
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -35,7 +37,7 @@ SOCIAL = (
             ('github', 'http://github.com/olinbg')
          )
 
-DEFAULT_PAGINATION = False
+DEFAULT_PAGINATION = 10
 
 STATIC_PATHS = ['images','files','favicon']
 ARTICLE_EXCLUDES = ['files']
@@ -53,7 +55,6 @@ BIO = 'Putting it all together...<br /><br /><a href="/pages/about.html">About</
 
 ARTICLE_URL = 'posts/{slug}.html'
 ARTICLE_SAVE_AS = 'posts/{slug}.html'
-# CATEGORY_SAVE_AS = 'category/{name}.html'
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
