@@ -2,7 +2,6 @@ Title: Python and Flask - Hello World
 Date: 2016-08-07 09:14
 Category: Python
 Slug: python-and-flask-hello-world
-Series: Python and Flask
 Status: published
 
 Python has a number of capable web frameworks, with [Django](https://www.djangoproject.com/) being the larger / "batteries included" option of the, and [Flask](http://flask.pocoo.org/) being the smaller / "assembly required" choice.  As with many projects in Python, I start with the [Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/scenarios/web/).  Here are two quotes from the site on picking a web framework:
