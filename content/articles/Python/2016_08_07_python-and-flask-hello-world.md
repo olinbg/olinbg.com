@@ -56,4 +56,4 @@ And you'll see this in the console:
 127.0.0.1 - - [07/Aug/2016 09:29:44] "GET / HTTP/1.1" 200 -
 ```
 
-Basic Flask setup, done.  Next up, some tutorials.
+Basic Flask setup, done.
