@@ -14,6 +14,7 @@ GIT_ADD=$(GIT) add --all
 GIT_COMMIT=$(GIT) commit -m "Site update: $(NOW)"
 GIT_PUSH=$(GIT) push -u origin master
 GIT_PULL=$(GIT) pull
+GIT_CONFLICTS=$(GIT) diff --name-only --diff-filter=U
 
 SSH_HOST=localhost
 SSH_PORT=22
@@ -46,6 +47,7 @@ help:
 	@echo '   make commit (or github)             upload the web site via gh-pages   '
 	@echo '   make checkout_output                get output folder from github      '
 	@echo '   make pull                           get latest changes from git        '
+	@echo '   make conflicts                      get conflicted files from git      '
 	@echo '   make serve (or live)                show command for live              '
 	@echo '   make post (or new_post)             show command for post              '
 	@echo '                                                                          '
@@ -84,6 +86,10 @@ checkout_output: clean
 pull: 
 	cd $(OUTPUTDIR) && $(GIT_PULL)
 	$(GIT_PULL)
+
+conflicts: 
+	cd $(OUTPUTDIR) && $(GIT_CONFLICTS)
+	$(GIT_CONFLICTS)
 
 serve: live
 
