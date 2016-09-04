@@ -2,7 +2,7 @@ Title: Setting Timezone in Bash for Windows
 Date: 2016-05-14 7:08
 Category: Bash For Windows
 Slug: timezone-in-bfw
-Status: published
+Status: draft
 
 Really quick and easy change, but one that didn't work correctly on my [initial Bash for Windows install]({filename}2016_05_06_pelican-python-bash.md) - timezone!
 

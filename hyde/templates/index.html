@@ -8,7 +8,7 @@
 				<h1 class="post-title" href="{{ SITEURL }}/{{ article.url }}">
 					<a href="{{ SITEURL }}/{{ article.url }}#{{ article.slug }}">{{ article.title }}</a>
 				</h1>
-				<span class="post-date">{{ article.locale_date }} in <a href="/{{ article.category.url }}">{{ article.category }}</a></span>
+				<!-- {{ article.locale_date }} --><span class="post-date">In <a href="/{{ article.category.url }}">{{ article.category }}</a></span>
 				<p>
 					{{ article.summary }}
 				</p>

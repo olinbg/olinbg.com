@@ -2,7 +2,7 @@ Title: Helpful Pelican Settings
 Date: 2016-05-12 22:52
 Category: Python
 Slug: helpful-pelican-settings
-Status: published
+Status: draft
 
 Pelican (the static site generator that powers this site) has a number of useful settings that can change how sites are generated and displayed.  A few of these I didn't find right away - they might've been missing from pelican-quickstart or not obviously documented.  In no particular order:
 

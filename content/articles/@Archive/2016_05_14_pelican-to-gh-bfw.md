@@ -2,7 +2,7 @@ Title: Publish Pelican to GitHub from Bash for Windows
 Date: 2016-05-14 06:37
 Category: Bash For Windows
 Slug: pelican-to-gh-bfw
-Status: published
+Status: draft
 
 _(You probably want to review [my earlier post on setting up Python and Pelican]({filename}2016_05_06_pelican-python-bash.md), and if you haven't already, [set up ssh keys as well]({filename}2016_05_06_ssh-key-github-bfw.md))_
 
