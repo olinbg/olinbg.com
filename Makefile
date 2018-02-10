@@ -94,7 +94,7 @@ conflicts:
 serve: live
 
 live:
-	@echo "py3 olinbg.py live"
+	@echo "python pelican-livereload.py"
 
 post: new_post
 
