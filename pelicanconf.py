@@ -39,7 +39,8 @@ SOCIAL = (
 
 DEFAULT_PAGINATION = 10
 
-STATIC_PATHS = ['images','files','favicon']
+TEMPLATE_PAGES = {'admin/index.html': 'admin/index.html'}
+STATIC_PATHS = ['images','files','favicon','admin']
 ARTICLE_EXCLUDES = ['files']
 EXTRA_PATH_METADATA = {
     'files/github/.nojekyll': {'path': '.nojekyll'},
@@ -55,6 +56,8 @@ BIO = 'Putting it all together...<br /><br /><a href="/pages/about.html">About</
 
 ARTICLE_URL = 'posts/{slug}.html'
 ARTICLE_SAVE_AS = 'posts/{slug}.html'
+
+CMS_ENV = "development"
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
