@@ -57,5 +57,7 @@ BIO = 'Putting it all together...<br /><br /><a href="/pages/about.html">About</
 ARTICLE_URL = 'posts/{slug}.html'
 ARTICLE_SAVE_AS = 'posts/{slug}.html'
 
+CMS_ENV = "development"
+
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True

@@ -4,7 +4,8 @@ backend:
 
 production:
   backend:
-    name: git-gateway
+    name: github-api
+    repo: olinbg/olinbg.com
     branch: master
 
 media_folder: "content/images" # Folder where user uploaded files should go
