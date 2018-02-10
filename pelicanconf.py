@@ -39,7 +39,8 @@ SOCIAL = (
 
 DEFAULT_PAGINATION = 10
 
-STATIC_PATHS = ['images','files','favicon']
+TEMPLATE_PAGES = {'admin/index.html': 'admin/index.html'}
+STATIC_PATHS = ['images','files','favicon','admin']
 ARTICLE_EXCLUDES = ['files']
 EXTRA_PATH_METADATA = {
     'files/github/.nojekyll': {'path': '.nojekyll'},
