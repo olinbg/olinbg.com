@@ -69,6 +69,8 @@ from livereload import Server, shell
 from pelican import Pelican
 from pelican.settings import read_settings
 
+settings = read_settings('pelicanconf.py')
+p = Pelican(settings)
 
 def main():
     command = sys.argv[1]
@@ -87,9 +89,6 @@ def main():
 
 
 def live():
-    settings = read_settings('pelicanconf.py')
-    p = Pelican(settings)
-
     server = Server()
     server.watch(p.settings['PATH'], compile)
     server.watch(p.settings['THEME'], compile)

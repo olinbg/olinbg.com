@@ -41,7 +41,7 @@ DEFAULT_PAGINATION = 10
 
 TEMPLATE_PAGES = {'admin/index.html': 'admin/index.html'}
 STATIC_PATHS = ['images','files','favicon','admin']
-ARTICLE_EXCLUDES = ['files']
+ARTICLE_EXCLUDES = ['files','admin']
 EXTRA_PATH_METADATA = {
     'files/github/.nojekyll': {'path': '.nojekyll'},
     'files/github/CNAME': {'path': 'CNAME'},
