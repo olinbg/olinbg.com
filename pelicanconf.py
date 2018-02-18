@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 AUTHOR = 'Olin Gay'
-SITENAME = 'Olin Gay - Blog'
+SITENAME = 'olinbg.com'
 SITEURL = ''
 
 PATH = 'content'
@@ -51,7 +51,7 @@ EXTRA_PATH_METADATA = {
 THEME = 'hyde'
 PROFILE_IMAGE = 'profile.jpg'
 
-BIO = 'Putting it all together...<br /><br /><a href="/pages/about.html">About</a>'
+BIO = 'Putting it all together...'
 
 ARTICLE_URL = 'posts/{slug}.html'
 ARTICLE_SAVE_AS = 'posts/{slug}.html'

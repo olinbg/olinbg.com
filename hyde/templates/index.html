@@ -6,16 +6,18 @@
 			<div class="post">
 				<!--<h1 class="post-title" href="{{ SITEURL }}/{{ article.url }}#{{ article.slug }}">-->
 				<h1 class="post-title" href="{{ SITEURL }}/{{ article.url }}">
-					<a href="{{ SITEURL }}/{{ article.url }}#{{ article.slug }}">{{ article.title }}</a>
+					<!-- <a href="{{ SITEURL }}/{{ article.url }}#{{ article.slug }}">{{ article.title }}</a> -->
 				</h1>
-				<!-- {{ article.locale_date }} --><span class="post-date">In <a href="/{{ article.category.url }}">{{ article.category }}</a></span>
+				<!-- {{ article.locale_date }} -->
+				<!-- <span class="post-date">In <a href="/{{ article.category.url }}">{{ article.category }}</a></span> -->
 				<p>
-					{{ article.summary }}
+					{{ article.content }}
 				</p>
-				<a class="read-more" href="{{ article.url }}">Continue reading »</a>
+				<!-- <a class="read-more" href="{{ article.url }}">Continue reading »</a> -->	
 			</div>
 		{% endfor %}
 	</div>
+	<!--
 	<div class="pagination">
 
 		{% if articles_page.has_previous() %}
@@ -31,4 +33,5 @@
 		<span class="pagination-item newer">Older</span>
 		{% endif %}
 	</div>
+	-->
 {% endblock %}

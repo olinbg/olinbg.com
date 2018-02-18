@@ -82,6 +82,7 @@ def main():
     elif command == 'build':
         build()
     elif command == 'live':
+        build()
         live()
     else:
         print("Invalid command")

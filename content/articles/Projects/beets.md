@@ -2,7 +2,7 @@ Title: beets and beets-spotify
 Date: 2016-09-04 7:05
 Category: Projects
 Slug: beets-beets-spotify
-Status: published
+Status: draft
 
 From their [homepage](http://beets.io/):
 
