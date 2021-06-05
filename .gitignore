@@ -3,3 +3,4 @@ pelican.pid
 *.pyc
 output
 pelican-env
+venv/
